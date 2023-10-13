@@ -6,6 +6,8 @@ return {
         "prettierd",
         "eslint-lsp",
         "shfmt",
+        "rnix-lsp",
+        "astro-language-server",
       },
     },
   },
