@@ -11,7 +11,14 @@ return {
     ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
       ]]
 
+      logo = string.rep("\n", 8) .. logo .. "\n\n"
+
       local opts = {
+        hide = {
+          -- this is taken care of by lualine
+          -- enabling this messes up the actual laststatus setting after loading a file
+          statusline = false,
+        },
         config = {
           header = vim.split(logo, "\n"),
           shortcut = {
@@ -48,7 +55,19 @@ return {
             },
           },
         },
+        -- stylua: ignore
       }
+
+      -- close Lazy and re-open when the dashboard is ready
+      if vim.o.filetype == "lazy" then
+        vim.cmd.close()
+        vim.api.nvim_create_autocmd("User", {
+          pattern = "DashboardLoaded",
+          callback = function()
+            require("lazy").show()
+          end,
+        })
+      end
 
       return opts
     end,
