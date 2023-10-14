@@ -5,3 +5,4 @@
 
 -- To link with which-key, use the following syntax and add main keymap to the whick-key pluging config:
 vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<cr>", { desc = "Create new Obsidian Note" })
+vim.keymap.set("n", "<leader>ux", "<cmd>TSContextToggle<cr>", { desc = "Toogle Treesitter context" })
