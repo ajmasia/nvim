@@ -1,13 +1,14 @@
 return {
   {
     "epwalsh/obsidian.nvim",
-    enabled = false,
+    enabled = true,
     config = function()
       require("obsidian").setup({
         dir = "~/obsidian/notes",
         -- use_advanced_uri = true,
         daily_notes = {
           folder = "dailies",
+          template = "daily_tamplate.md",
         },
         completion = {
           nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
@@ -37,6 +38,10 @@ return {
           end
           return suffix .. "_" .. tostring(os.time())
         end,
+        mappings = {},
+        templates = {
+          subdir = "resources/native_templates",
+        },
       })
     end,
   },

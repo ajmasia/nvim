@@ -15,10 +15,10 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.util.project" },
     -- import/override with your plugins
     { import = "plugins" },
+    { import = "lazyvim.plugins.extras.coding.copilot" }, -- this extra plugin update lualine plugin
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -30,7 +30,10 @@ require("lazy").setup({
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = {
+    enabled = true,
+    notify = false, -- get a notification when changes are found
+  }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
