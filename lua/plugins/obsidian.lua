@@ -4,12 +4,12 @@ return {
     enabled = true,
     config = function()
       require("obsidian").setup({
-        dir = "~/obsidian/notes",
+        dir = "~/obsidian/rolling-mind",
         -- use_advanced_uri = true,
-        daily_notes = {
-          folder = "dailies",
-          template = "daily_tamplate.md",
-        },
+        -- daily_notes = {
+        --   folder = "dailies",
+        --   template = "daily_tamplate.md",
+        -- },
         completion = {
           nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
         },
@@ -39,9 +39,9 @@ return {
           return suffix .. "_" .. tostring(os.time())
         end,
         mappings = {},
-        templates = {
-          subdir = "resources/native_templates",
-        },
+        -- templates = {
+        --   subdir = "resources/native_templates",
+        -- },
       })
     end,
   },
