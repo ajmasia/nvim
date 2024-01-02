@@ -21,6 +21,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.formatting.black" }, -- python
     { import = "lazyvim.plugins.extras.coding.copilot" }, -- python
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" }, -- python
+    { import = "lazyvim.plugins.extras.util.project" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
     { import = "plugins" },
