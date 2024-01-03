@@ -17,8 +17,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
-    { import = "lazyvim.plugins.extras.formatting.black" }, -- python
     { import = "lazyvim.plugins.extras.coding.copilot" }, -- python
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" }, -- python
     { import = "lazyvim.plugins.extras.util.project" },

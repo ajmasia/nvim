@@ -3,7 +3,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
-      ensure_installed = {},
+      ensure_installed = { "prettier", "black", "ruff-lsp" },
     },
   },
   -- Servers configurations
@@ -38,6 +38,7 @@ return {
     opts = {
       formatters_by_ft = {
         ["lua"] = { "stylua" },
+        ["python"] = { "black" },
         -- ["javascript"] = { { "prettierd", "prettier" } },
         -- ["javascriptreact"] = { { "prettierd", "prettier" } },
         -- ["typescript"] = { { "prettierd", "prettier" } },
