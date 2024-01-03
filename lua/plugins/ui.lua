@@ -60,19 +60,25 @@ return {
           header = vim.split(logo, "\n"),
           shortcut = {
             {
-              desc = " Find File",
+              desc = "󱊓 Project",
+              group = "DashboardProjectTitle",
+              action = "Telescope projects",
+              key = "p",
+            },
+            {
+              desc = "󰥨 File",
               group = "Label",
               action = "Telescope find_files",
               key = "f",
             },
             {
-              desc = "󱁴 Find Text",
+              desc = "󱩾 Text",
               group = "Label",
               action = "Telescope live_grep",
               key = "g",
             },
             {
-              desc = " Restore Session",
+              desc = " Restore",
               group = "Number",
               action = "lua require('persistence').load()",
               key = "s",
