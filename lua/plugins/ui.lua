@@ -1,5 +1,13 @@
 return {
-  -- messages, cmdline and the popupmenu
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    ---@class CatppuccinOptions
+    opts = {
+      flavour = "mocha",
+    },
+  },
   {
     "folke/noice.nvim",
     opts = {
