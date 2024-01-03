@@ -8,6 +8,7 @@ return {
       flavour = "mocha",
     },
   },
+  { "projekt0n/github-nvim-theme" },
   {
     "folke/noice.nvim",
     opts = {
