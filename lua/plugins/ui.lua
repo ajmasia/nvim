@@ -2,55 +2,15 @@ return {
   -- messages, cmdline and the popupmenu
   {
     "folke/noice.nvim",
-    opts = function(_, opts)
-      table.insert(opts.routes, {
-        filter = {
-          event = "notify",
-          find = "No information available",
-        },
-        opts = { skip = true },
-      })
-      local focused = true
-      vim.api.nvim_create_autocmd("FocusGained", {
-        callback = function()
-          focused = true
-        end,
-      })
-      vim.api.nvim_create_autocmd("FocusLost", {
-        callback = function()
-          focused = false
-        end,
-      })
-      table.insert(opts.routes, 1, {
-        filter = {
-          cond = function()
-            return not focused
-          end,
-        },
-        view = "notify_send",
-        opts = { stop = false },
-      })
-
-      opts.commands = {
-        all = {
-          -- options for the message history that you get with `:Noice`
-          view = "split",
-          opts = { enter = true, format = "details" },
-          filter = {},
-        },
-      }
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "markdown",
-        callback = function(event)
-          vim.schedule(function()
-            require("noice.text.markdown").keys(event.buf)
-          end)
-        end,
-      })
-
-      opts.presets.lsp_doc_border = true
-    end,
+    opts = {
+      presets = {
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
+        long_message_to_split = true, -- long messages will be sent to a split
+        inc_rename = true, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = true, -- add a border to hover docs and signature help
+      },
+    },
   },
   {
     "nvim-lualine/lualine.nvim",
@@ -64,20 +24,20 @@ return {
         section_separators = { left = "", right = "" },
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
+      sections = {
+        lualine_b = {
+          { "branch", icon = "" },
+        },
+        lualine_z = {},
+      },
     },
   },
   {
     "nvimdev/dashboard-nvim",
     enabled = true,
     opts = function()
-      local logo = [[
-    ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗
-    ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║
-    ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║
-    ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║
-    ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
-    ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
-         ]]
+      -- Neovim in binary generated from https://ascii.co.uk/text
+      local logo = "01101110 01100101 01101111 01110110 01101001 01101101"
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
 
@@ -123,6 +83,13 @@ return {
               key = "c",
             },
           },
+          footer = function()
+            local currentConfig = "" .. os.getenv("MYVIMRC")
+            local nvimVersion =
+              string.format("Using Neovim v%d.%d.%d", vim.version().major, vim.version().minor, vim.version().patch)
+
+            return { "", nvimVersion, currentConfig, "", "🚀 Sharp tools make good work" }
+          end,
         },
       }
       -- close Lazy and re-open when the dashboard is ready
