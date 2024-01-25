@@ -3,14 +3,8 @@ return {
     "nvimdev/dashboard-nvim",
     enabled = true,
     opts = function()
-      local logo = [[
-        ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗
-        ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║
-        ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║
-        ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║
-        ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
-        ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
-          ]]
+      -- Neovim in binary generated from https://ascii.co.uk/text
+      local logo = "01101110 01100101 01101111 01110110 01101001 01101101"
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
 
@@ -25,19 +19,25 @@ return {
           header = vim.split(logo, "\n"),
           shortcut = {
             {
-              desc = " Find File",
+              desc = "󱊓 Project",
+              group = "DashboardProjectTitle",
+              action = "Telescope projects",
+              key = "p",
+            },
+            {
+              desc = "󰥨 File",
               group = "Label",
               action = "Telescope find_files",
               key = "f",
             },
             {
-              desc = "󱁴 Find Text",
+              desc = "󱩾 Text",
               group = "Label",
               action = "Telescope live_grep",
               key = "g",
             },
             {
-              desc = " Restore Session",
+              desc = " Restore",
               group = "Number",
               action = "lua require('persistence').load()",
               key = "s",
@@ -56,10 +56,15 @@ return {
               key = "c",
             },
           },
-        },
-        -- stylua: ignore
-      }
+          footer = function()
+            local currentConfig = "" .. os.getenv("MYVIMRC")
+            local nvimVersion =
+              string.format("Using Neovim v%d.%d.%d", vim.version().major, vim.version().minor, vim.version().patch)
 
+            return { "", nvimVersion, currentConfig, "", "🚀 Sharp tools make good work" }
+          end,
+        },
+      }
       -- close Lazy and re-open when the dashboard is ready
       if vim.o.filetype == "lazy" then
         vim.cmd.close()

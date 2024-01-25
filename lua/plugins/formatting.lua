@@ -5,7 +5,7 @@ return {
     opts = {
       formatters_by_ft = {
         ["lua"] = { "stylua" },
-        ["nix"] = { "alejandra" },
+        -- ["nix"] = { "alejandra" },
         ["javascript"] = { { "prettierd", "prettier" } },
         ["javascriptreact"] = { { "prettierd", "prettier" } },
         ["typescript"] = { { "prettierd", "prettier" } },
