@@ -8,6 +8,8 @@ return {
         "shfmt",
         "rnix-lsp",
         "astro-language-server",
+        "tailwindcss-language-server",
+        "emmet-ls",
       },
     },
   },
